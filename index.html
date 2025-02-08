@@ -1,97 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | draw4</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
+    <script src="Build/Build6.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
 
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-        }
-        
-        .iframe-wrapper-draw {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
 
-        .iframe-wrapper-call {
-            position: absolute;
-            top: 100px;
-            left: 0;
-            width: 300px;
-            height: 500px;
-            z-index: 2;
-            background: white;
-        }
-        
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        document.body.style.textAlign = "left";
+      }
 
-        @media screen and (max-width: 768px) {
-            body, html {
-                overflow: auto;
-                height: auto;
-            }
-            
-            .container {
-                position: static;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .iframe-wrapper-draw,
-            .iframe-wrapper-call {
-                position: static;
-                width: 100%;
-            }
-            
-            .iframe-wrapper-call {
-                height: 500px;
-            }
-            
-            .iframe-wrapper-draw {
-                height: 100vh;
-            }
-            
-            iframe {
-                position: static;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="iframe-wrapper-call">
-            <iframe
-                title="100ms-app"
-                allow="camera *;microphone *;display-capture *"
-                src="https://stephan-videoconf-852.app.100ms.live/meeting/ehc-crec-kof">
-            </iframe>
-        </div>
-        <div class="iframe-wrapper-draw">
-            <iframe 
-                src="https://tryangular1.github.io/draw0" 
-                name="myiFrame" 
-                scrolling="no" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</body>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/Build6.data",
+        frameworkUrl: "Build/Build6.framework.js",
+        codeUrl: "Build/Build6.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "draw4",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
 </html>
