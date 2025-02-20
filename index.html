@@ -1,45 +1,82 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | draw4</title>
-  </head>
-  <style>
-      max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrameShare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #EFEBE9;
+            min-height: 100vh;
+        }
 
-.header {
-    padding: 15px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-}
+        .bg-brown-light {
+            background-color: #EFEBE9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-.drawing-container {
-    position: relative;
-    width: 100%;
-    height: 600px;
-}
-  </style>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-  <div class="chat-wrapper">
-    <div class="header">
-        <h2>Collaborative Drawing Room</h2>
+        .navbar-brand {
+            font-weight: 500;
+            color: #3E2723;
+        }
+
+        .navbar-brand img {
+            transition: transform 0.2s ease;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            padding: 15px;
+            max-width: 1400px;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 140px);
+            min-height: 600px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-brown-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://seeklogo.com/images/D/direct-link-logo-06C418E23E-seeklogo.com.png" height="30" alt="FrameShare Logo" class="me-2">
+                <span class="h4 mb-0">FrameShare</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Chat Container -->
+    <div class="container">
+        <div class="chat-container">
+            <div class="iframe-wrapper">
+                <iframe 
+                    src="https://draw.chat/dc2ixzsm23ktr9pgnsrdqdst9yd97x:zprf6cwzk1yhk8qp2sfwgc23ek04vnzg50fm#p1,0,0,r0,s1,tool=pen" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
-    <div class="drawing-container">
-        <iframe 
-            src="https://draw.chat/dc2ixzsm23ktr9pgnsrdqdst9yd97x:zprf6cwzk1yhk8qp2sfwgc23ek04vnzg50fm#p1,0,0,r0,s1,tool=pen" 
-            width="100%" 
-            height="600px" 
-            frameborder="0" 
-            allowfullscreen>
-        </iframe>
-    </div>
-</div>
 
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
